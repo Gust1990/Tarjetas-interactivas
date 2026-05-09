@@ -3,212 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Cumpleaños de Mamá!</title>
+    <title>Invitación Especial - Mamá</title>
     <style>
-        /* CSS: Estilo elegante y responsivo */
+        /* Paleta de colores y variables */
         :root {
-            --primario: #d81b60;
-            --secundario: #fce4ec;
-            --texto: #2d3436;
-            --blanco: rgba(255, 255, 255, 0.9);
+            --color-oro: #c5a880;
+            --color-fondo: #ffffff;
+            --color-texto: #333333;
+            --color-acento: #d81b60;
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
-            margin: 0;
-            padding: 20px;
+            font-family: 'Georgia', serif;
+            background-color: #1a1a1a;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            color: var(--texto);
+            color: var(--color-texto);
         }
 
-        .invitacion {
-            background: var(--blanco);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 40px 30px;
-            max-width: 450px;
+        /* Contenedor tipo móvil */
+        .main-container {
             width: 100%;
+            max-width: 480px;
+            background-color: var(--color-fondo);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Sección Hero con fondo de flores */
+        .hero-section {
+            height: 100vh;
+            /* Imagen de flores primaverales */
+            background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.5)), 
+                        url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=600&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        h1 { color: var(--primario); font-size: 2.2rem; margin-bottom: 10px; }
-        
-        .frase {
-            font-style: italic;
-            color: #636e72;
-            margin: 20px 0;
-            line-height: 1.6;
-            padding: 0 10px;
-        }
-
-        .contador {
-            background: #fff;
-            padding: 15px;
-            border-radius: 15px;
-            font-weight: bold;
-            color: var(--primario);
-            font-size: 1.2rem;
-            margin: 20px 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .info-evento {
-            text-align: left;
-            background: #fdf2f5;
             padding: 20px;
+        }
+
+        /* Superposición del texto */
+        .hero-text-overlay {
+            background: rgba(255,255,255,0.85);
+            padding: 35px 25px;
             border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 1px solid rgba(197, 168, 128, 0.3);
+        }
+
+        .hero-text-overlay h1 { font-size: 2.8rem; margin-bottom: 15px; font-weight: bold; color: #000; }
+        .hero-text-overlay p { font-size: 1.15rem; line-height: 1.5; font-style: italic; margin-bottom: 25px; color: #222; }
+        .hero-text-overlay .te-quiero { font-size: 3.5rem; color: #000; font-family: 'Times New Roman', serif; font-weight: bold; }
+
+        /* Secciones comunes */
+        section {
+            padding: 60px 25px;
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--color-oro);
             margin-bottom: 25px;
+            font-style: italic;
         }
 
-        .info-evento p { margin: 10px 0; font-size: 1.1rem; }
-        .info-evento b { color: var(--primario); }
+        /* Contador */
+        .timer-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .timer-unit {
+            background: #fdfaf6;
+            padding: 15px;
+            border-radius: 8px;
+            min-width: 75px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid #f0e6d6;
+        }
+        .timer-unit span { display: block; font-size: 1.8rem; font-weight: bold; color: var(--color-oro); }
 
-        .btn-mapa {
-            background-color: #4caf50;
-            color: white;
-            padding: 12px 20px;
-            text-decoration: none;
-            border-radius: 10px;
+        /* Botones */
+        .btn {
             display: inline-block;
-            margin-bottom: 30px;
-            font-weight: bold;
+            background-color: var(--color-oro);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-top: 20px;
             transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
         }
 
-        .form-rsvp { text-align: left; }
-        .form-group { margin-bottom: 15px; }
-        
-        label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
-        
+        .btn:hover {
+            background-color: #a88d66;
+        }
+
+        /* Formulario RSVP */
+        .form-group { text-align: left; margin-bottom: 15px; font-family: sans-serif; }
+        label { display: block; margin-bottom: 5px; font-size: 0.9rem; color: #666; font-weight: bold; }
         input, select {
             width: 100%;
-            padding: 12px;
+            padding: 15px;
             border: 1px solid #ddd;
-            border-radius: 10px;
-            box-sizing: border-box;
+            border-radius: 8px;
             font-size: 1rem;
             outline: none;
         }
-
-        input:focus { border-color: var(--primario); }
-
-        .btn-enviar {
-            background: var(--primario);
-            color: white;
-            border: none;
-            padding: 18px;
-            width: 100%;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: 0.3s;
+        input:focus, select:focus {
+            border-color: var(--color-oro);
         }
 
-        .btn-enviar:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(216, 27, 96, 0.3); }
-
+        /* Contenedor responsivo para el iframe de YouTube */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body>
 
-    <div class="invitacion">
-        <h1>¡Feliz Cumpleaños! 🌸</h1>
-        <p class="frase">"El amor de una madre es el motor que nos permite lograr lo increíble."</p>
+    <div class="main-container">
         
-        <div class="contador" id="timer">Calculando tiempo...</div>
-
-        <div class="info-evento">
-            <p>📅 <b>Fecha:</b> 20 de Mayo de 2026</p>
-            <p>⏰ <b>Hora:</b> 21:00 hs</p>
-            <p>📍 <b>Lugar:</b> San Pedro de Jujuy</p>
-        </div>
-
-        <a href="https://www.google.com/maps/search/?api=1&query=San+Pedro+de+Jujuy" target="_blank" class="btn-mapa">
-            📍 Abrir en Google Maps
-        </a>
-
-        <form class="form-rsvp" id="formInvitacion">
-            <div class="form-group">
-                <label>Tu Nombre Completo:</label>
-                <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required>
+        <section class="hero-section">
+            <div class="hero-text-overlay">
+                <h1>Mamá</h1>
+                <p>Sin ti mi vida simplemente hubiera sido imposible. Agradezco por cada beso, cada sonrisa, cada momento y todo tu apoyo.</p>
+                <div class="te-quiero">Te quiero</div>
             </div>
+        </section>
 
-            <div class="form-group">
-                <label>¿Confirmas tu asistencia?</label>
-                <select id="asistencia">
-                    <option value="si">¡Sí, estaré presente!</option>
-                    <option value="no">No podré asistir</option>
-                </select>
+        <section>
+            <h2 class="section-title">Faltan solo...</h2>
+            <div class="timer-container">
+                <div class="timer-unit"><span id="d">00</span><small>Días</small></div>
+                <div class="timer-unit"><span id="h">00</span><small>Hs</small></div>
+                <div class="timer-unit"><span id="m">00</span><small>Min</small></div>
             </div>
+        </section>
 
-            <div class="form-group">
-                <label>Acompañantes:</label>
-                <input type="number" id="acompanantes" value="0" min="0" max="10">
+        <section>
+            <h2 class="section-title">¿Dónde será?</h2>
+            <!-- Corregido el corchete de cierre del párrafo -->
+            <p>Celebraremos este día tan especial en nuestro lugar favorito de San Pedro de Jujuy.</p>
+            <p style="margin-top: 15px;"><strong>Dirección:</strong> Calle Juan Manuel de Rosas 576 Bº La Merced</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=San+Pedro+de+Jujuy" target="_blank" class="btn">Abrir Mapa</a>
+        </section>
+
+        <section>
+            <h2 class="section-title">Un video para Ella</h2>
+            <!-- Código corregido para incrustar el video de YouTube -->
+            <div class="video-container">
+                <iframe src="https://youtu.be/d3MQ5ZmK--Y?si=KFTIblW-xkUvoH6K-Y" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+            <p>Hemos preparado una recopilación de nuestros mejores momentos juntos.</p>
+        </section>
 
-            <div class="form-group">
-                <label>Preferencias de Menú:</label>
-                <select id="dieta">
-                    <option value="Tradicional">Tradicional</option>
-                    <option value="Vegetariano">Vegetariano</option>
-                    <option value="Celiaco">Sin TACC</option>
-                </select>
-            </div>
+        <section id="rsvp">
+            <h2 class="section-title">Confirma tu Asistencia</h2>
+            <form id="inviteForm">
+                <div class="form-group">
+                    <label>Nombre y Apellido</label>
+                    <input type="text" id="nombre" required placeholder="Escribe tu nombre">
+                </div>
+                <div class="form-group">
+                    <label>¿Vienes acompañado?</label>
+                    <input type="number" id="invitados" value="0" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Preferencia de menú</label>
+                    <select id="menu">
+                        <option value="Estandar">Estándar</option>
+                        <option value="Celiaco">Sin TACC</option>
+                        <option value="Vegetariano">Vegetariano</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Confirmar por WhatsApp</button>
+            </form>
+        </section>
 
-            <button type="submit" class="btn-enviar">Confirmar por WhatsApp</button>
-        </form>
     </div>
 
     <script>
-        // 1. Lógica de la Cuenta Regresiva
-        const fechaEvento = new Date('May 20, 2026 21:00:00').getTime();
-
+        // Lógica del Timer
+        const eventDate = new Date('May 20, 2026 21:00:00').getTime();
+        
         setInterval(() => {
-            const ahora = new Date().getTime();
-            const diferencia = fechaEvento - ahora;
-
-            if (diferencia < 0) {
-                document.getElementById('timer').innerText = "¡Llegó el día!";
-                return;
+            const now = new Date().getTime();
+            const diff = eventDate - now;
+            
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                
+                document.getElementById('d').innerText = days;
+                document.getElementById('h').innerText = hours;
+                document.getElementById('m').innerText = minutes;
             }
-
-            const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-            const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-
-            // Aplicamos la regla: puntos por comas en el formato de visualización si fuera necesario
-            document.getElementById('timer').innerText = `Faltan ${dias}d ${horas}h ${minutos}m`;
         }, 1000);
 
-        // 2. Lógica de Redirección a WhatsApp
-        document.getElementById('formInvitacion').addEventListener('submit', function(e) {
+        // Envío directo al WhatsApp con los datos
+        document.getElementById('inviteForm').addEventListener('submit', function(e) {
             e.preventDefault();
-
             const nombre = document.getElementById('nombre').value;
-            const asistencia = document.getElementById('asistencia').value;
-            const acompanantes = document.getElementById('acompanantes').value;
-            const dieta = document.getElementById('dieta').value;
-            const numeroTel = "5492604844892";
-
-            let mensaje = `¡Hola! Soy ${nombre}. \n`;
+            const extras = document.getElementById('invitados').value;
+            const menu = document.getElementById('menu').value;
+            const tel = "5492604844892";
             
-            if (asistencia === 'si') {
-                mensaje += `Confirmo mi asistencia al cumple de mamá. 🥳\n`;
-                mensaje += `Asistiré con ${acompanantes} acompañantes.\n`;
-                mensaje += `Mi menú preferido es: ${dieta}.`;
-            } else {
-                mensaje += `Lamentablemente no podré ir. ¡Pasen un hermoso día! 💐`;
-            }
-
-            const url = `https://wa.me/${numeroTel}?text=${encodeURIComponent(mensaje)}`;
-            window.location.href = url;
+            const msg = encodeURIComponent(`¡Hola! Confirmo mi asistencia al cumple de Mamá.\nNombre: ${nombre}\nAcompañantes: ${extras}\nMenú: ${menu}`);
+            window.location.href = `https://wa.me/${tel}?text=${msg}`;
         });
     </script>
 </body>
