@@ -132,7 +132,7 @@
         <section style="padding: 30px 25px;">
             <h2 class="section-title">Un poco de música</h2>
             <p style="margin-bottom: 15px; font-size: 0.9rem;">Dale play para ambientar la invitación</p>
-            <iframe width="100%" height="200" src="https://www.youtube.com/embed/iaVmHssVWas" title="Los Ángeles Azules" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);" allowfullscreen></iframe>
+            <iframe width="100%" height="200" src="https://www.youtube.com/embed/lkbKLweyfm4" title="Video Musical" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);" allowfullscreen></iframe>
         </section>
 
         <section>
@@ -180,6 +180,38 @@
         </section>
 
     </div>
+
+    <script>
+        const eventDate = new Date('May 10, 2026 13:00:00').getTime();
+        
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = eventDate - now;
+            
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                
+                document.getElementById('d').innerText = days;
+                document.getElementById('h').innerText = hours;
+                document.getElementById('m').innerText = minutes;
+            }
+        }, 1000);
+
+        document.getElementById('inviteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const extras = document.getElementById('invitados').value;
+            const menu = document.getElementById('menu').value;
+            const tel = "5492604844892";
+            
+            const msg = encodeURIComponent(`¡Hola! Confirmo mi asistencia al cumple de Mamá.\nNombre: ${nombre}\nAcompañantes: ${extras}\nMenú: ${menu}`);
+            window.location.href = `https://wa.me/${tel}?text=${msg}`;
+        });
+    </script>
+</body>
+</html>
 
     <script>
         const eventDate = new Date('May 10, 2026 13:00:00').getTime();
