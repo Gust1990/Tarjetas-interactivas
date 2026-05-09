@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Cumpleaños de Mamá!</title>
+    <style>
+        /* CSS: Estilo elegante y responsivo */
+        :root {
+            --primario: #d81b60;
+            --secundario: #fce4ec;
+            --texto: #2d3436;
+            --blanco: rgba(255, 255, 255, 0.9);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--texto);
+        }
+
+        .invitacion {
+            background: var(--blanco);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 40px 30px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        h1 { color: var(--primario); font-size: 2.2rem; margin-bottom: 10px; }
+        
+        .frase {
+            font-style: italic;
+            color: #636e72;
+            margin: 20px 0;
+            line-height: 1.6;
+            padding: 0 10px;
+        }
+
+        .contador {
+            background: #fff;
+            padding: 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            color: var(--primario);
+            font-size: 1.2rem;
+            margin: 20px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .info-evento {
+            text-align: left;
+            background: #fdf2f5;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .info-evento p { margin: 10px 0; font-size: 1.1rem; }
+        .info-evento b { color: var(--primario); }
+
+        .btn-mapa {
+            background-color: #4caf50;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 10px;
+            display: inline-block;
+            margin-bottom: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .form-rsvp { text-align: left; }
+        .form-group { margin-bottom: 15px; }
+        
+        label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        input:focus { border-color: var(--primario); }
+
+        .btn-enviar {
+            background: var(--primario);
+            color: white;
+            border: none;
+            padding: 18px;
+            width: 100%;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-enviar:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(216, 27, 96, 0.3); }
+
+    </style>
+</head>
+<body>
+
+    <div class="invitacion">
+        <h1>¡Feliz Cumpleaños! 🌸</h1>
+        <p class="frase">"El amor de una madre es el motor que nos permite lograr lo increíble."</p>
+        
+        <div class="contador" id="timer">Calculando tiempo...</div>
+
+        <div class="info-evento">
+            <p>📅 <b>Fecha:</b> 20 de Mayo de 2026</p>
+            <p>⏰ <b>Hora:</b> 21:00 hs</p>
+            <p>📍 <b>Lugar:</b> San Pedro de Jujuy</p>
+        </div>
+
+        <a href="https://www.google.com/maps/search/?api=1&query=San+Pedro+de+Jujuy" target="_blank" class="btn-mapa">
+            📍 Abrir en Google Maps
+        </a>
+
+        <form class="form-rsvp" id="formInvitacion">
+            <div class="form-group">
+                <label>Tu Nombre Completo:</label>
+                <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required>
+            </div>
+
+            <div class="form-group">
+                <label>¿Confirmas tu asistencia?</label>
+                <select id="asistencia">
+                    <option value="si">¡Sí, estaré presente!</option>
+                    <option value="no">No podré asistir</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Acompañantes:</label>
+                <input type="number" id="acompanantes" value="0" min="0" max="10">
+            </div>
+
+            <div class="form-group">
+                <label>Preferencias de Menú:</label>
+                <select id="dieta">
+                    <option value="Tradicional">Tradicional</option>
+                    <option value="Vegetariano">Vegetariano</option>
+                    <option value="Celiaco">Sin TACC</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-enviar">Confirmar por WhatsApp</button>
+        </form>
+    </div>
+
+    <script>
+        // 1. Lógica de la Cuenta Regresiva
+        const fechaEvento = new Date('May 20, 2026 21:00:00').getTime();
+
+        setInterval(() => {
+            const ahora = new Date().getTime();
+            const diferencia = fechaEvento - ahora;
+
+            if (diferencia < 0) {
+                document.getElementById('timer').innerText = "¡Llegó el día!";
+                return;
+            }
+
+            const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+
+            // Aplicamos la regla: puntos por comas en el formato de visualización si fuera necesario
+            document.getElementById('timer').innerText = `Faltan ${dias}d ${horas}h ${minutos}m`;
+        }, 1000);
+
+        // 2. Lógica de Redirección a WhatsApp
+        document.getElementById('formInvitacion').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const nombre = document.getElementById('nombre').value;
+            const asistencia = document.getElementById('asistencia').value;
+            const acompanantes = document.getElementById('acompanantes').value;
+            const dieta = document.getElementById('dieta').value;
+            const numeroTel = "5492604844892";
+
+            let mensaje = `¡Hola! Soy ${nombre}. \n`;
+            
+            if (asistencia === 'si') {
+                mensaje += `Confirmo mi asistencia al cumple de mamá. 🥳\n`;
+                mensaje += `Asistiré con ${acompanantes} acompañantes.\n`;
+                mensaje += `Mi menú preferido es: ${dieta}.`;
+            } else {
+                mensaje += `Lamentablemente no podré ir. ¡Pasen un hermoso día! 💐`;
+            }
+
+            const url = `https://wa.me/${numeroTel}?text=${encodeURIComponent(mensaje)}`;
+            window.location.href = url;
+        });
+    </script>
+</body>
+</html>
