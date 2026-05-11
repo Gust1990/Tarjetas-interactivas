@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitación Especial - Mamá</title>
+    
+    <!-- Configuración para App Instalada Localmente (PWA) -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Invitación">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Icono SVG Base64 de Tarjetas Interactivas -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0OCIgZmlsbD0iI2Q4MWI2MCIvPjxyZWN0IHg9IjIwIiB5PSIyMCIgd2lkdGg9IjQ1IiBoZWlnaHQ9IjYwIiByeD0iNSIgZmlsbD0iI2ZkZmFmNiIgc3Ryb2tlPSIjYzVhODgwIiBzdHJva2Utd2lkdGg9IjMiIHRyYW5zZm9ybT0icm90YXRlKC0xNSA0MiA1MCkiLz48cmVjdCB4PSIzNSIgeT0iMjUiIHdpZHRoPSI0NSIgaGVpZ2h0PSI2MCIgcng9IjUiIGZpbGw9IiNmZmZmZmYiIHN0cm9rZT0iI2M1YTg4MCIgc3Ryb2tlLXdpZHRoPSIzIi8+PHBvbHlnb24gcG9pbnRzPSI1MCw0NSA1MCw2NSA2NSw1NSIgZmlsbD0iI2M1YTg4MCIvPjwvc3ZnPg==">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0OCIgZmlsbD0iI2Q4MWI2MCIvPjxyZWN0IHg9IjIwIiB5PSIyMCIgd2lkdGg9IjQ1IiBoZWlnaHQ9IjYwIiByeD0iNSIgZmlsbD0iI2ZkZmFmNiIgc3Ryb2tlPSIjYzVhODgwIiBzdHJva2Utd2lkdGg9IjMiIHRyYW5zZm9ybT0icm90YXRlKC0xNSA0MiA1MCkiLz48cmVjdCB4PSIzNSIgeT0iMjUiIHdpZHRoPSI0NSIgaGVpZ2h0PSI2MCIgcng9IjUiIGZpbGw9IiNmZmZmZmYiIHN0cm9rZT0iI2M1YTg4MCIgc3Ryb2tlLXdpZHRoPSIzIi8+PHBvbHlnb24gcG9pbnRzPSI1MCw0NSA1MCw2NSA2NSw1NSIgZmlsbD0iI2M1YTg4MCIvPjwvc3ZnPg==">
+
     <style>
         :root {
             --color-oro: #c5a880;
@@ -23,7 +34,7 @@
 
         .main-container {
             width: 100%;
-            max-width: 700px; /* Aquí ampliamos el ancho de la página */
+            max-width: 700px;
             background-color: var(--color-fondo);
             min-height: 100vh;
             overflow-x: hidden;
@@ -116,7 +127,6 @@
         }
         input:focus, select:focus { border-color: var(--color-oro); }
 
-        /* Estilos para el botón enlace de YouTube */
         .yt-link-container {
             position: relative;
             display: block;
@@ -138,7 +148,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: rgba(216, 27, 96, 0.9); /* Usa el color de acento */
+            background: rgba(216, 27, 96, 0.9);
             color: white;
             padding: 15px 30px;
             border-radius: 50px;
@@ -156,7 +166,7 @@
         <section class="hero-section">
             <div class="hero-text-overlay">
                 <h1>Feliz Cumpleaños Mamá</h1>
-                <p>Sin ti mi vida simplemente hubiera sido imposible. Te agradezco por cada beso, cada sonrisa, cada momento y por todo tu apoyo.</p>
+                <p>Sin ti mi vida simplemente hubiera sido imposible, Te agradezco por cada beso. cada sonrisa. cada momento y por todo tu apoyo,</p>
                 <div class="te-quiero">Te quiero mucho</div>
             </div>
         </section>
@@ -173,7 +183,7 @@
         </section>
 
         <section>
-            <h2 class="section-title">Faltan solo...</h2>
+            <h2 class="section-title">Faltan solo,,,</h2>
             <div class="timer-container">
                 <div class="timer-unit"><span id="d">00</span><small>Días</small></div>
                 <div class="timer-unit"><span id="h">00</span><small>Hs</small></div>
@@ -183,7 +193,7 @@
 
         <section>
             <h2 class="section-title">¿Dónde será?</h2>
-            <p>Celebraremos este día tan especial en nuestro lugar favorito de San Pedro de Jujuy.</p>
+            <p>Celebraremos este día tan especial en nuestro lugar favorito de San Pedro de Jujuy,</p>
             <p style="margin-top: 15px;"><strong>Dirección:</strong> Calle Juan Manuel de Rosas 576 Bº La Merced</p>
             <a href="Https://maps.app.goo.gl/nKmARjczL7rE2YFS6" target="_blank" class="btn">Abrir Mapa</a>
         </section>
@@ -243,7 +253,7 @@
             const menu = document.getElementById('menu').value;
             const tel = "5492604844892";
             
-            const msg = encodeURIComponent(`¡Hola! Confirmo mi asistencia al cumple de Mamá.\nNombre: ${nombre}\nAcompañantes: ${extras}\nMenú: ${menu}`);
+            const msg = encodeURIComponent(`¡Hola! Confirmo mi asistencia al cumple de Mamá,\nNombre: ${nombre}\nAcompañantes: ${extras}\nMenú: ${menu}`);
             window.location.href = `https://wa.me/${tel}?text=${msg}`;
         });
     </script>
