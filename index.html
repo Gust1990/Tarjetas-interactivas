@@ -17,6 +17,7 @@
 
     <style>
         :root {
+            /* El color oro por defecto, ahora será sobreescrito por JavaScript según el día */
             --color-oro: #c5a880;
             --color-fondo: #ffffff;
             --color-texto: #333333;
@@ -78,6 +79,7 @@
             color: var(--color-oro);
             margin-bottom: 25px;
             font-style: italic;
+            transition: color 0.3s ease;
         }
 
         .timer-container {
@@ -94,7 +96,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             border: 1px solid #f0e6d6;
         }
-        .timer-unit span { display: block; font-size: 1.8rem; font-weight: bold; color: var(--color-oro); }
+        .timer-unit span { display: block; font-size: 1.8rem; font-weight: bold; color: var(--color-oro); transition: color 0.3s ease;}
 
         .btn {
             display: inline-block;
@@ -113,7 +115,7 @@
             width: 100%;
         }
 
-        .btn:hover { background-color: #a88d66; }
+        .btn:hover { filter: brightness(0.9); }
 
         .form-group { text-align: left; margin-bottom: 15px; font-family: sans-serif; }
         label { display: block; margin-bottom: 5px; font-size: 0.9rem; color: #666; font-weight: bold; }
@@ -229,6 +231,27 @@
     </div>
 
     <script>
+        // --- LÓGICA DE COLORES POR DÍA DEL MES ---
+        function aplicarColorPorFecha() {
+            const diaActual = new Date().getDate();
+            let colorTema = '#c5a880'; // Color por defecto
+
+            if (diaActual >= 25 || diaActual <= 10) {
+                colorTema = '#4CAF50'; // Verde
+            } else if (diaActual >= 11 && diaActual <= 17) {
+                colorTema = '#FFB300'; // Amarillo (Oscurecido para legibilidad)
+            } else if (diaActual >= 18 && diaActual <= 24) {
+                colorTema = '#E53935'; // Rojo
+            }
+
+            // Cambiamos la variable CSS global que controla títulos, contador y botones
+            document.documentElement.style.setProperty('--color-oro', colorTema);
+        }
+        
+        // Ejecutamos la función de color al cargar la página
+        aplicarColorPorFecha();
+        
+        // --- LÓGICA DEL CONTADOR ---
         const eventDate = new Date('May 10, 2026 13:00:00').getTime();
         
         setInterval(() => {
@@ -246,6 +269,7 @@
             }
         }, 1000);
 
+        // --- LÓGICA DEL FORMULARIO DE WHATSAPP ---
         document.getElementById('inviteForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const nombre = document.getElementById('nombre').value;
